@@ -1,8 +1,33 @@
 # Blockchain based election
 
-This repo contains a note (./BCelecReq.pdf) and the implementation (./Code) of a blockchain designed for use in elections. The code structure is described below.
+This repo contains a [note](https://github.com/GAKht/BCelec/blob/master/BCelecReq.pdf) (./BCelecReq.pdf) and the implementation (./Code) of a blockchain designed for use in elections. The code structure is described below.
 
 The blockchain was coded in Python 3.10.2. For any comments or questions, please contact me on guill.khayat@gmail.com.
+
+### Who gets and does what?
+
+The below diagram presents briefly the main points that guarantee the election's safety and transparency. See the description [note](https://github.com/GAKht/BCelec/blob/master/BCelecReq.pdf) for more details.
+
+```mermaid
+sequenceDiagram
+    participant Gvt as Government
+    participant V as Voter
+    participant P as Public
+    Gvt->>V: Secret & Public keys
+    Gvt->>V: Nonce 1
+    Gvt->>V: Nonce 2
+    Gvt->>V: N-1 random numbers <br> (needed in the ring signature)
+    Gvt->>P: Voting rights
+    Gvt->>P: RSA public key
+    Gvt-->P: Start of voting process
+    Note over Gvt,P: Using his public and secret information, the eligible voter creates <br>and publishes his vote which includes among other points<br> the below points that guarantee the vot's secrecy: <br> 1) RSA encrypted vote message: Nonce2_msg <br> 2) Ring signature (nonce 1 guarantees its validity)
+    Note over V,P:  Anyone can verify the validity of any vote, <br> see the description note for more details
+    Gvt-->P: End of voting process
+    Gvt->>P: RSA secret key
+    Note over Gvt,P: After the selection of only valid votes (see the description  <br>note  for more details), the election results is calculated  <br>after the RSA decryption of each vote's message 
+    Note over V,P:  Anyone can verify the veracity of the election <br>results, see the description  note  for more details
+```
+
 
 ### Implementation
 
