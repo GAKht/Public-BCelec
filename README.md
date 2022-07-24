@@ -19,10 +19,10 @@ sequenceDiagram
     Gvt->>V: N-1 random numbers <br> (needed in the ring signature)
     Gvt->>P: Voting rights
     Gvt->>P: RSA public key
-    Gvt-->P: Start of voting process
+    Gvt-->P: Start of the voting process
     Note over Gvt,P: Using his public and secret information, the eligible voter creates <br>and publishes his vote which includes among other points<br> the below points that guarantee the vot's secrecy: <br> 1) RSA encrypted vote message: Nonce2_msg <br> 2) Ring signature (nonce 1 guarantees its validity)
     Note over V,P:  Anyone can verify the validity <br> of any vote, see the description note <br> for more details
-    Gvt-->P: End of voting process
+    Gvt-->P: End of the voting process
     Gvt->>P: RSA secret key
     Note over Gvt,P: After the selection of only valid votes (see the description  <br>note  for more details), the election results is calculated  <br>after the RSA decryption of each vote's message 
     Note over V,P:  Anyone can verify the veracity <br>of the election results, <br>see the description note  for more details
