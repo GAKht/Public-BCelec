@@ -25,7 +25,7 @@ sequenceDiagram
     Gvt-->P: End of the voting process
     Gvt->>P: RSA secret key
     Note over Gvt,P: After the selection of only valid votes (see the description  <br>note  for more details), the election results is calculated  <br>after the RSA decryption of each vote's message 
-    Note over V,P:  Anyone can verify the veracity <br>of the election results, <br>see the description note  for more details
+    Note over V,P:  Anyone can verify the veracity <br>of the election results, see <br>the description note  for more details
 ```
 
 
